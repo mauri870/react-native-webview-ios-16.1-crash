@@ -8,5 +8,5 @@
 
 ## React Native example
 
-- Update one of the webview examples with http://localhost:8000 and try to open in the ios simulator.
+- Update one of the webview examples from the [react-native-webview repo](https://github.com/react-native-webview/react-native-webview) with http://localhost:8000 and try to open in the ios simulator.
 - The webview will crash with "Webview Process terminated". The window.SharedWorker is defined but once you call new SharedWorker it crashes the webview.
