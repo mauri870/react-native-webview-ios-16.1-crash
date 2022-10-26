@@ -1,8 +1,9 @@
 # POC Shared Worker issues with react-native-webview on IOS 16.1
 
+- cd simple-sw-example; python -m http.server 8000
+
 ## Swift example (works without any issues)
 
-- cd simple-sw-example; python -m http.server 8000
 - Open the current directory in Xcode, build and run, you should see an alert
 
 ## React Native example
