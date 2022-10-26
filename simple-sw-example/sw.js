@@ -1,0 +1,1 @@
+onconnect = function (e) {};

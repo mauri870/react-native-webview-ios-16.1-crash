@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+	<body>
+		<p>Shared worker example.</p>
+	</body>
+	<script>
+		var hasSharedWorkers = typeof window.SharedWorker === "function";
+		if (hasSharedWorkers) {
+			new SharedWorker("/sw.js");
+		}
+
+		setTimeout(() => alert("If you are seeing this that means shared workers can be instantiated properly"), 2000);;
+	</script>
+</html>
