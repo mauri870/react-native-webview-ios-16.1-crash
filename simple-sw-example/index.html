@@ -1,14 +1,23 @@
 <!doctype html>
 <html>
 	<body>
-		<p>Shared worker example.</p>
+		<h1 id="msg"></h2>
 	</body>
 	<script>
-		var hasSharedWorkers = typeof window.SharedWorker === "function";
-		if (hasSharedWorkers) {
-			new SharedWorker("/sw.js");
+		function showMsg(msg) {
+			let e = document.getElementById("msg");
+			e.appendChild(document.createTextNode(msg))
 		}
 
-		setTimeout(() => alert("If you are seeing this that means shared workers can be instantiated properly"), 2000);;
+		let hasSharedWorkers = typeof window.SharedWorker === "function";
+		if (hasSharedWorkers) {
+			try {
+				new SharedWorker("/sw.js");
+				showMsg("If you are seeing this that means shared workers can be instantiated properly");
+			} catch (e) {
+				showMsg("Ooops, something went wrong when creating a shared worker");
+				console.error(e);
+			}
+		}
 	</script>
 </html>

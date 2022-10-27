@@ -1,54 +1,23 @@
-//
-//  ViewController.swift
-//  WebViewExample
-//
-//  Created by Jeff Krantz on 8/1/17.
-//  Copyright © 2017 Jeff Krantz. All rights reserved.
-//
+import WebKit
 
-import UIKit
-
-class ViewController: UIViewController, UIWebViewDelegate {
+class ViewController: UIViewController, WKUIDelegate {
     
-    var webView: UIWebView?
+    var webView: WKWebView?
     let targetURL: String = "http://localhost:8000"
+    
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView!.uiDelegate = self
+        view = webView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        let width: CGFloat! = self.view.bounds.width
-        let height: CGFloat! = self.view.bounds.height
-        let statusBarHeight: CGFloat! = UIApplication.shared.statusBarFrame.height
-        
-        self.webView = self.createWebView(frame: CGRect(x: 0, y: statusBarHeight, width: width, height:height))
-        
-        self.view.addSubview(self.webView!)
-        
-        let url = NSURL(string: targetURL)
-        let request = NSURLRequest(url: url! as URL)
-        
-        self.webView?.loadRequest(request as URLRequest)
-        
+        let url = URL(string: targetURL)
+        let request = URLRequest(url: url!)
+        webView?.load(request)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func createWebView(frame: CGRect) -> UIWebView {
-        let _webView = UIWebView()
-        
-        _webView.delegate = self;
-        
-        _webView.frame = frame
-        
-        return _webView
-    }
-    
-    
-
-
 }
 
