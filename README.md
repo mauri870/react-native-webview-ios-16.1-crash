@@ -1,5 +1,9 @@
 # POC Shared Worker issues with IOS 16.1 webview
 
+[Apple Developers post with workaround](https://developer.apple.com/forums/thread/718757)
+
+[Webkit confirmed issue](https://github.com/WebKit/WebKit/pull/5872)
+
 - Start a simple http server with shared workers `cd simple-sw-example; python -m http.server 8000`
 - Open the current directory in Xcode 14.0 (current stable), build and run against IOS 16.0, everything should work as expected
 - Download xcode 14.1 rc2 (current unstable), build and run against IOS 16.1, the webview will crash.
